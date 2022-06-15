@@ -1,0 +1,59 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Equations For PyData Berlin}
+\author{Dillon R. Gardner}
+\date{2022-06-06}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+ \begin{align*}
+E[ U ] = & \;  u_{TP} * TPR * r_p \; + \; u_{FN} * (1 - TPR) * r_p  \;+ \\
+	    & \; u_{FP} * FPR * r_n \; +  \;u_{TN} * (1 - FPR) * r_n \\
+	    \\
+r_n = & \frac{N}{N + P} \\
+\\
+r_p =  &\frac{P}{N+P}
+\end{align*}
+It makes a line
+
+Maybe two
+
+ \begin{align*}
+ TPR &= m * FPR + b
+ \\
+ m &= \frac{u_{TN} - u_{FP}}{u_{TP} - u_{FN}} * \frac{r_n}{r_p}
+ \\
+b &= \frac{E[U] - u_{FN} * r_p - u_{TN} * r_n}{(u_{TP} - u_{FN})*r_p}  
+ \end{align*}
+ 
+  \begin{align*}
+ TPR &= m * FPR \;+\; b
+ \end{align*}
+ 
+ 
+ \begin{align*}
+m &= \frac{u_{TN} - u_{FP}}{u_{TP} - u_{FN}} * \frac{r_n}{r_p}
+\end{align*}
+
+ \begin{align*}
+b &= \frac{E[U] - u_{FN} * r_p - u_{TN} * r_n}{(u_{TP} - u_{FN})*r_p} 
+\end{align*}
+
+
+% \begin{align}
+%|a\rangle& \sim |R_{n,l}(r); l, m_l, s, m_s \rangle \\ \\
+%|b\rangle \sim |\psi_{i}(\mathbf{k},r)\rangle  & = |R_{n,L}(r) \rangle |\phi_i (\mathbf{k}) \rangle \\ \\
+%R_{n,l}(r) Y_{1,m_l}(\theta,\phi) \chi_{s,m_s} &= |R_{n,l}(r); l, m_l, s, m_s \rangle
+%\end{align}
+
+
+\end{document}  
