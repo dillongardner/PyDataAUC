@@ -88,7 +88,7 @@ class ROCPlotter:
         """Add line of iso-utility"""
         fpr_values = np.linspace(0,1,5)
         tpr_values =utility_matrix.tpr_from_fpr_utility(fpr_values, utility)
-        self.ax.plot(fpr_values, tpr_values, label=f'Utility: {utility:0.0f}')
+        self.ax.plot(fpr_values, tpr_values, label=f'Utility: {utility:0.0f}', **kwargs)
         return self
 
     def show(self):
