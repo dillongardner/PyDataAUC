@@ -4,6 +4,10 @@ import matplotlib.pylab as plt
 from sklearn.metrics import roc_curve
 import numpy as np
 
+from utils.roc import ROC
+
+roc = ROC()
+
 
 @dataclass
 class UtilityMatrix:

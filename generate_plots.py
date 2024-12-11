@@ -22,50 +22,6 @@ def make_blank_plot():
     plotter.fig.savefig('./blank.png')
 
 
-def make_plot_1():
-    utility_matrix = UtilityMatrix(110, -162, -10, -10, 0.5)
-    plotter = ROCPlotter()
-    plotter.plot_iso_utility(utility_matrix, utility_matrix.utility_at_accept,
-                             color=my_mapper(utility_matrix.utility_at_accept)). \
-        plot_iso_utility(utility_matrix, utility_matrix.utility_at_reject,
-                         color=my_mapper(utility_matrix.utility_at_reject)). \
-        plot_iso_utility(utility_matrix, 5, color=my_mapper(10)). \
-        plot_iso_utility(utility_matrix, 20, color=my_mapper(20))
-    plotter.ax.set_title(f'Slope: {utility_matrix.slope:0.2f} ')
-    plotter.show()
-    # ax.title = f'Slope: {utility_matrix.slope}'
-    plotter.fig.savefig('./iso_utility_1.png')
-    plotter.fig.show()
-
-
-def make_plot_2():
-    utility_matrix = UtilityMatrix(110, -162, -10, -10, 0.6)
-    plotter = ROCPlotter()
-    plotter.plot_iso_utility(utility_matrix, utility_matrix.utility_at_accept,
-                             color=my_mapper(utility_matrix.utility_at_accept)). \
-        plot_iso_utility(utility_matrix, utility_matrix.utility_at_reject,
-                         color=my_mapper(utility_matrix.utility_at_reject)). \
-        plot_iso_utility(utility_matrix, 10, color=my_mapper(10)). \
-        plot_iso_utility(utility_matrix, 20, color=my_mapper(20))
-    plotter.ax.set_title(f'Slope: {utility_matrix.slope:0.2f} ')
-    plotter.show()
-    # ax.title = f'Slope: {utility_matrix.slope}'
-    plotter.fig.savefig('./iso_utility_2.png')
-    plotter.fig.show()
-
-
-def make_single_lines_1():
-    utility_matrix = UtilityMatrix(110, -162, -10, -10, 0.5)
-    plotter = ROCPlotter()
-    plotter. \
-        plot_iso_utility(utility_matrix, utility_matrix.utility_at_reject,
-                         color=my_mapper(utility_matrix.utility_at_reject))
-    plotter.ax.set_title(f'Slope: {utility_matrix.slope:0.2f} ')
-    plotter.show()
-    # ax.title = f'Slope: {utility_matrix.slope}'
-    plotter.fig.savefig('./single_1.png')
-    plotter.fig.show()
-
 def make_plots(utility_matrix, utility_values):
     plotter = ROCPlotter()
     for value in utility_values:
@@ -75,8 +31,59 @@ def make_plots(utility_matrix, utility_values):
     return plotter
 
 
+def make_and_save_plot_0():
+    utility_matrix = UtilityMatrix(110, -162, -10, -10, 0.5)
+    plotter = make_plots(utility_matrix,
+                         [utility_matrix.utility_at_accept,
+                          utility_matrix.utility_at_reject,
+                          0, 5, 10, 15, 20, 25])
+    plotter.fig.savefig('./iso_utility_0.png')
+    plotter.fig.show()
+
+
+def make_and_save_plot_1():
+    utility_matrix = UtilityMatrix(110, -162, -10, -10, 0.5)
+    plotter = make_plots(utility_matrix,
+                         [utility_matrix.utility_at_accept,
+                          utility_matrix.utility_at_reject,
+                          5, 20])
+    plotter.fig.savefig('./iso_utility_1.png')
+    plotter.fig.show()
+
+
+def make_and_save_plot_2():
+    utility_matrix = UtilityMatrix(110, -162, -10, -10, 0.6)
+    plotter = make_plots(utility_matrix,
+                         [utility_matrix.utility_at_accept,
+                          utility_matrix.utility_at_reject,
+                          10, 20])
+    plotter.fig.savefig('./iso_utility_2.png')
+    plotter.fig.show()
+
+
+def make_and_save_plot_3():
+    utility_matrix = UtilityMatrix(110, -162, -10, -10, 0.5)
+    plotter = make_plots(utility_matrix,
+                         [utility_matrix.utility_at_accept,
+                          utility_matrix.utility_at_reject,
+                          1, 10, 20])
+    plotter.fig.savefig('./iso_utility_3.png')
+    plotter.fig.show()
+
+make_and_save_plot_3()
+
+
 if __name__ == '__main__':
     make_blank_plot()
-    make_plot_1()
-    make_plot_2()
-    make_single_lines_1()
+    make_and_save_plot_0()
+    make_and_save_plot_1()
+    make_and_save_plot_2()
+    make_and_save_plot_3()
+    utility_matrix = UtilityMatrix(110, -162, -10, -10, 0.5)
+    p = make_plots(utility_matrix, [utility_matrix.utility_at_reject])
+    p.fig.savefig('./basic_1.png')
+    p.fig.show()
+    p = make_plots(utility_matrix, [utility_matrix.utility_at_reject,
+                                    utility_matrix.utility_at_accept])
+    p.fig.savefig('./basic_2.png')
+    p.fig.show()
